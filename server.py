@@ -1,4 +1,5 @@
 import rpyc
+import os
 
 class MyService(rpyc.Service):
 
@@ -20,7 +21,9 @@ class MyService(rpyc.Service):
 if __name__=="__main__":
     from rpyc.utils.server import ThreadedServer
     print("RPC Server Starting")
-    t = ThreadedServer(MyService,port=9876)
+    t = ThreadedServer(MyService,port=os.environ.get("port",5000))
+    print(f'Server listening on {t.port}:{t.host}')
+    
     t.start()
 
     print("RPC Server Started")
