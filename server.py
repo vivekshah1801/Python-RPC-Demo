@@ -1,5 +1,6 @@
 import rpyc
 import os
+from flask import Flask
 
 class MyService(rpyc.Service):
 
@@ -27,3 +28,10 @@ if __name__=="__main__":
     t.start()
 
     print("RPC Server Started")
+
+if __name__=="__main__":
+    app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    return "Hi vivek, flask is on."
