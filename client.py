@@ -1,5 +1,11 @@
 import rpyc
 
-r = rpyc.connect("rocky-dawn-55347.herokuapp.com",5000).root
+host = "localhost"
+port = 9876
+
+r = rpyc.connect(host, port).root
 
 print(r)
+
+print(r.helloworld())
+print("Done")
